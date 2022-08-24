@@ -1,3 +1,14 @@
+/**
+ * @file Light_Weight_Decoder.c
+ * @author Victor Le Roy Brito (vleroy@tekroy.cl)
+ * @brief 
+ * @version 0.1
+ * @date 2022-08-23
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "Light_Weight_Decoder.h"
 
 void LW_Decoder_Init(Light_Weight_Decoder * lw_decoder, uint8_t * buffer, size_t buffer_size){

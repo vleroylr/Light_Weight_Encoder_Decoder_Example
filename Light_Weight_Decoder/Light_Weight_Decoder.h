@@ -1,3 +1,14 @@
+/**
+ * @file Light_Weight_Decoder.h
+ * @author Victor Le Roy Brito (vleroy@tekroy.cl)
+ * @brief 
+ * @version 0.1
+ * @date 2022-08-23
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #ifndef _LIGHT_WEIGHT_DECODER
 #define _LIGHT_WEIGHT_DECODER
 
