@@ -2,10 +2,14 @@
 
 uint8_t asl = 2;
 
-
 void LW_Formatter_Init(Light_Weight_Formatter * formatter_instance){
     formatter_instance->elements = 0;
 }
+
+void LW_Formatter_Restart(Light_Weight_Formatter * lw_decoder){
+    lw_decoder->elements = 0;
+}
+
 
 void LW_Formatter_Add_Variable_Interface(Light_Weight_Formatter * formatter_instance, uint8_t * base, size_t bytes_number){
     for(uint8_t i = 0; i < bytes_number; i++){
@@ -37,13 +41,3 @@ void LW_Formatter_Print_Contents_Hex_Raw(Light_Weight_Formatter * formatter_inst
     printf("\r\n================\r\n");
 }
 
-void LW_Decoder_Print_Contents_Hex_Raw(Light_Weight_Decoder * decoder_instance){
-    printf("Decoder Buffer Contents: \r\n");
-
-    for(uint8_t i = 0; i < decoder_instance->read_pointer ; i++){
-        //printf("%02X", decoder_instance->buffer[decoder_instance->read_pointer - 1 - i]);
-        printf("%02X", decoder_instance->buffer[i]);
-    }
-    printf("\r\nBytes Used: %lu", decoder_instance->read_pointer);
-    printf("\r\n================\r\n");
-}

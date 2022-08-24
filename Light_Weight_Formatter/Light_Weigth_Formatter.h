@@ -3,34 +3,63 @@
 
 #include <stdint.h>
 #include <stdio.h>
+
+//****************************************
 #define LW_FORMATTER_BUFFER_SIZE 128
 typedef struct{
     uint8_t buffer[LW_FORMATTER_BUFFER_SIZE];
     size_t elements;
 }Light_Weight_Formatter;
-//****************************************
-
-#define LW_DECODER_BUFFER_SIZE 128
-typedef struct{
-    uint8_t * buffer;
-    size_t buffer_size;
-    size_t read_pointer;
-}Light_Weight_Decoder;
-
-Light_Weight_Decoder Lw_Decoder;
-
 /**
  * @brief Function Prototypes
  * 
  * @param formatter_instance 
  */
 
+/**
+ * @brief Initializes the formater Struct
+ * 
+ * @param formatter_instance 
+ */
 void LW_Formatter_Init(Light_Weight_Formatter * formatter_instance);
+
+/**
+ * @brief Interface for adding data to the formatter's buffer, Specialized by macros
+ * 
+ * @param formatter_instance 
+ * @param base 
+ * @param bytes_number 
+ */
 void LW_Formatter_Add_Variable_Interface(Light_Weight_Formatter * formatter_instance, uint8_t * base, size_t bytes_number);
+
+/**
+ * @brief Returns a pointer to the formatter's buffer
+ * 
+ * @param formatter_instance 
+ * @return uint8_t* 
+ */
 uint8_t * LW_Formatter_Get_Buffer(Light_Weight_Formatter * formatter_instance);
+
+/**
+ * @brief Prints the formatter data in human readable format
+ * 
+ * @param formatter_instance 
+ */
 void LW_Formatter_Print_Contents(Light_Weight_Formatter * formatter_instance);
+
+/**
+ * @brief Prints the formatter data in Hex format
+ * 
+ * @param formatter_instance 
+ */
 void LW_Formatter_Print_Contents_Hex_Raw(Light_Weight_Formatter * formatter_instance);
-void LW_Decoder_Print_Contents_Hex_Raw(Light_Weight_Decoder * decoder_instance);
+
+/**
+ * @brief Resets the number of elements in the formatter
+ * 
+ * @param lw_decoder 
+ */
+void LW_Formatter_Restart(Light_Weight_Formatter * lw_decoder);
 /**
  * @brief Macros
  * 
@@ -57,5 +86,4 @@ void LW_Decoder_Print_Contents_Hex_Raw(Light_Weight_Decoder * decoder_instance);
 #define LW_Formatter_Add_Double(formatter, var) LW_Formatter_Add_Variable_Interface(formatter, (uint8_t *)&var, 8)
 #define LW_Formatter_Add_Str(formatter, var, size) LW_Formatter_Add_Variable_Interface(formatter, (uint8_t *)var, size)
 //#define LW_Formatter_Add_Array(formatter, var) LW_Formatter_Add_Variable(formatter, var)
-void LW_Decoder_Print_Contents_Hex_Raw(Light_Weight_Decoder * decoder_instance);
 #endif
