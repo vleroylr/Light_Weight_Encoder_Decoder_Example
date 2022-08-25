@@ -12,8 +12,9 @@
 #include <stdint.h>
 #include <string.h>
 
-#include "Light_Weight_Formatter/Light_Weigth_Formatter.h"
-#include "Light_Weight_Decoder/Light_Weight_Decoder.h"
+//You must include the library's path
+#include "Light_Weight_Formatter/Light_Weigth_Formatter.h" //Formatter library (encoder)
+#include "Light_Weight_Decoder/Light_Weight_Decoder.h" //Decoder library (decoding)
 
 /*********************************************/
 /** USAGE EXAMPLE **/
@@ -29,7 +30,7 @@ typedef struct{
     double d;
 }IOT_Message;
 
-//  2)Create instances of the struct as if it was a message holder
+//  2) Create instances of the struct as if it was a message holder
 IOT_Message iot_message_decoded; //Create a message holder with the struct where you will be receiving the data
 IOT_Message iot_message_encoder; //Create a message holder with the struct where you will be sending the data
 
@@ -173,12 +174,12 @@ int main(){
         //Now we compare the memory contents
         if(memory_compare(Specialized_Formatter.buffer, Lw_Decoder.buffer, Lw_Decoder.read_pointer)){
             //If they are the same then congrats!
-            printf("Encoded data succesfully decoded!");
+            printf("Encoded data succesfully decoded!\r\n\r\n");
         }else{
             //If they are not the same then:
             //  1) Check that you are encoding and decoding correctly
             //  2) If its a bug then please open an issue on GitHub
-            printf("Data error");
+            printf("Data error\r\n\r\n");
         }
     }
 }
